@@ -4,8 +4,8 @@
 * `ros2_fra2mo` 
 * `ros2_iiwa`
 * `ros2_kdl_package`
-* `aruco_ros` (External)
-* `m-explore-ros2` (External)
+* `aruco_ros`
+* `m-explore-ros2` 
 
 ### Exploration
 To start the simulation run in a terminal:
