@@ -1,0 +1,1337 @@
+<sdf version='1.9'>
+  <world name='custom_room'>
+    <physics name='1ms' type='ignored'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <plugin name='ignition::gazebo::systems::Physics' filename='libignition-gazebo-physics-system.so'/>
+    <plugin name='ignition::gazebo::systems::UserCommands' filename='libignition-gazebo-user-commands-system.so'/>
+    <plugin name='ignition::gazebo::systems::Sensors' filename='libignition-gazebo-sensors-system.so'>
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin name='ignition::gazebo::systems::SceneBroadcaster' filename='libignition-gazebo-scene-broadcaster-system.so'/>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>true</shadows>
+    </scene>
+    <model name='ground_plane'>
+      <static>true</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.8 0.8 0.8 1</specular>
+          </material>
+        </visual>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0 0 0 0 -0 0</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='wall_north'>
+      <static>true</static>
+      <pose>10 0 1 0 -0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 20 2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 20 2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+          </material>
+        </visual>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='wall_south'>
+      <static>true</static>
+      <pose>-10 0 1 0 -0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 20 2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 20 2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+          </material>
+        </visual>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='wall_east'>
+      <static>true</static>
+      <pose>0 10 1 0 -0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>20 0.2 2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>20 0.2 2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+          </material>
+        </visual>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='wall_west'>
+      <static>true</static>
+      <pose>0 -10 1 0 -0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>20 0.2 2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>20 0.2 2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+          </material>
+        </visual>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='column_center'>
+      <static>true</static>
+      <pose>2.95518 0 1 0 -0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1</radius>
+              <length>2</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1</radius>
+              <length>2</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.8 1</ambient>
+          </material>
+        </visual>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='wall_internal'>
+      <static>true</static>
+      <pose>-7.13467 5.90741 1 0 -0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 8 2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 8 2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.2 0.2 1</ambient>
+          </material>
+        </visual>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='target_iiwa_placeholder'>
+      <static>true</static>
+      <pose>-5 -5 0.5 0 -0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.29999999999999999</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.29999999999999999</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1 0.5 0 1</ambient>
+          </material>
+        </visual>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='iiwa'>
+      <joint name='iiwa_iiwa_root_joint' type='fixed'>
+        <pose>0 0 0 0 -0 0</pose>
+        <parent>world</parent>
+        <child>iiwa_iiwa_base</child>
+      </joint>
+      <link name='iiwa_iiwa_base'>
+        <pose>1 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.1 0 0.07 0 -0 0</pose>
+          <mass>5</mass>
+          <inertia>
+            <ixx>0.050000000000000003</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.059999999999999998</iyy>
+            <iyz>0</iyz>
+            <izz>0.029999999999999999</izz>
+          </inertia>
+        </inertial>
+        <collision name='iiwa_iiwa_base_fixed_joint_lump__iiwa_link_0_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/user/ros2_ws/install/iiwa_description/share/iiwa_description/meshes/lbr_iiwa_14_r820/collision/base_link.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='iiwa_iiwa_base_fixed_joint_lump__iiwa_link_0_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/user/ros2_ws/install/iiwa_description/share/iiwa_description/meshes/lbr_iiwa_14_r820/visual/base_link.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='iiwa_joint_a1' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <parent>iiwa_iiwa_base</parent>
+        <child>iiwa_link_1</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-2.9668000000000001</lower>
+            <upper>2.9668000000000001</upper>
+            <effort>320</effort>
+            <velocity>1.4834000000000001</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='iiwa_link_1'>
+        <pose>1 0 0 0 -0 0.499999</pose>
+        <inertial>
+          <pose>0 -0.03 0.12 0 -0 0</pose>
+          <mass>4</mass>
+          <inertia>
+            <ixx>0.10000000000000001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.089999999999999997</iyy>
+            <iyz>0</iyz>
+            <izz>0.02</izz>
+          </inertia>
+        </inertial>
+        <collision name='iiwa_link_1_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/user/ros2_ws/install/iiwa_description/share/iiwa_description/meshes/lbr_iiwa_14_r820/collision/link_1.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='iiwa_link_1_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/user/ros2_ws/install/iiwa_description/share/iiwa_description/meshes/lbr_iiwa_14_r820/visual/link_1.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='iiwa_joint_a2' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <parent>iiwa_link_1</parent>
+        <child>iiwa_link_2</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-2.0941999999999998</lower>
+            <upper>2.0941999999999998</upper>
+            <effort>320</effort>
+            <velocity>1.4834000000000001</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='iiwa_link_2'>
+        <pose>0.999617 -0.000209 0.36 0 -0.7854 0.5</pose>
+        <inertial>
+          <pose>0.0003 0.059 0.042 0 -0 0</pose>
+          <mass>4</mass>
+          <inertia>
+            <ixx>0.050000000000000003</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.017999999999999999</iyy>
+            <iyz>0</iyz>
+            <izz>0.043999999999999997</izz>
+          </inertia>
+        </inertial>
+        <collision name='iiwa_link_2_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/user/ros2_ws/install/iiwa_description/share/iiwa_description/meshes/lbr_iiwa_14_r820/collision/link_2.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='iiwa_link_2_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/user/ros2_ws/install/iiwa_description/share/iiwa_description/meshes/lbr_iiwa_14_r820/visual/link_2.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='iiwa_joint_a3' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <parent>iiwa_link_2</parent>
+        <child>iiwa_link_3</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-2.9668000000000001</lower>
+            <upper>2.9668000000000001</upper>
+            <effort>176</effort>
+            <velocity>1.7452000000000001</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='iiwa_link_3'>
+        <pose>0.999617 -0.000209 0.36 -0 -0.785401 0.5</pose>
+        <inertial>
+          <pose>0 0.03 0.13 0 -0 0</pose>
+          <mass>3</mass>
+          <inertia>
+            <ixx>0.080000000000000002</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.074999999999999997</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='iiwa_link_3_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/user/ros2_ws/install/iiwa_description/share/iiwa_description/meshes/lbr_iiwa_14_r820/collision/link_3.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='iiwa_link_3_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/user/ros2_ws/install/iiwa_description/share/iiwa_description/meshes/lbr_iiwa_14_r820/visual/link_3.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='iiwa_joint_a4' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <parent>iiwa_link_3</parent>
+        <child>iiwa_link_4</child>
+        <axis>
+          <xyz>0 -1 0</xyz>
+          <limit>
+            <lower>-2.0941999999999998</lower>
+            <upper>2.0941999999999998</upper>
+            <effort>176</effort>
+            <velocity>1.3089</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='iiwa_link_4'>
+        <pose>0.739259 -0.142444 0.657293 -3.14159 -0.959992 -2.64159</pose>
+        <inertial>
+          <pose>0 0.067 0.034 0 -0 0</pose>
+          <mass>2.7000000000000002</mass>
+          <inertia>
+            <ixx>0.029999999999999999</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.029000000000000001</izz>
+          </inertia>
+        </inertial>
+        <collision name='iiwa_link_4_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/user/ros2_ws/install/iiwa_description/share/iiwa_description/meshes/lbr_iiwa_14_r820/collision/link_4.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='iiwa_link_4_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/user/ros2_ws/install/iiwa_description/share/iiwa_description/meshes/lbr_iiwa_14_r820/visual/link_4.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='iiwa_joint_a5' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <parent>iiwa_link_4</parent>
+        <child>iiwa_link_5</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-2.9668000000000001</lower>
+            <upper>2.9668000000000001</upper>
+            <effort>110</effort>
+            <velocity>2.2688000000000001</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='iiwa_link_5'>
+        <pose>0.739258 -0.142444 0.657293 -3.14159 -0.959992 -2.64159</pose>
+        <inertial>
+          <pose>0.0001 0.021 0.076 0 -0 0</pose>
+          <mass>1.7</mass>
+          <inertia>
+            <ixx>0.02</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.017999999999999999</iyy>
+            <iyz>0</iyz>
+            <izz>0.0050000000000000001</izz>
+          </inertia>
+        </inertial>
+        <collision name='iiwa_link_5_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/user/ros2_ws/install/iiwa_description/share/iiwa_description/meshes/lbr_iiwa_14_r820/collision/link_5.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='iiwa_link_5_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/user/ros2_ws/install/iiwa_description/share/iiwa_description/meshes/lbr_iiwa_14_r820/visual/link_5.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='iiwa_joint_a6' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <parent>iiwa_link_5</parent>
+        <child>iiwa_link_6</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-2.0941999999999998</lower>
+            <upper>2.0941999999999998</upper>
+            <effort>40</effort>
+            <velocity>2.3559999999999999</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='iiwa_link_6'>
+        <pose>0.451697 -0.299539 0.427882 -0.001959 -1.5707 0.501959</pose>
+        <inertial>
+          <pose>0 0.0006 0.0004 0 -0 0</pose>
+          <mass>1.8</mass>
+          <inertia>
+            <ixx>0.025000000000000001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.013599999999999999</iyy>
+            <iyz>0</iyz>
+            <izz>0.0247</izz>
+          </inertia>
+        </inertial>
+        <collision name='iiwa_link_6_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/user/ros2_ws/install/iiwa_description/share/iiwa_description/meshes/lbr_iiwa_14_r820/collision/link_6.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='iiwa_link_6_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/user/ros2_ws/install/iiwa_description/share/iiwa_description/meshes/lbr_iiwa_14_r820/visual/link_6.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='iiwa_joint_a7' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <parent>iiwa_link_6</parent>
+        <child>iiwa_link_7</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-3.0541</lower>
+            <upper>3.0541</upper>
+            <effort>40</effort>
+            <velocity>2.3559999999999999</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='iiwa_link_7'>
+        <pose>0.451697 -0.299539 0.427882 -0 -1.5707 0.5</pose>
+        <inertial>
+          <pose>0 0 0.025975 0 -0 0</pose>
+          <mass>0.448571</mass>
+          <inertia>
+            <ixx>0.012343099999999999</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.012343099999999999</iyy>
+            <iyz>0</iyz>
+            <izz>0.012</izz>
+          </inertia>
+        </inertial>
+        <collision name='iiwa_link_7_collision'>
+          <pose>0 0 0.07000000000000001 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/user/ros2_ws/install/iiwa_description/share/iiwa_description/meshes/lbr_iiwa_14_r820/collision/link_7_2.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='iiwa_link_7_visual'>
+          <pose>0 0 0.07000000000000001 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/user/ros2_ws/install/iiwa_description/share/iiwa_description/meshes/lbr_iiwa_14_r820/visual/link_7_2.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.625 0.625 0.625 1</diffuse>
+            <ambient>0.625 0.625 0.625 1</ambient>
+          </material>
+        </visual>
+        <visual name='iiwa_link_7_fixed_joint_lump__iiwa_camera_link_visual_1'>
+          <pose>0 0 0.154 0 -1.570796326794897 3.140001267767481</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+        </visual>
+        <sensor name='iiwa_camera_sensor' type='camera'>
+          <pose>0 0 0.154 3.14159 -1.57079 -0.001593</pose>
+          <topic>/iiwa/camera</topic>
+          <update_rate>30</update_rate>
+          <enable_metrics>false</enable_metrics>
+          <camera>
+            <pose>0 0 0 0 -0 0</pose>
+            <horizontal_fov>1.5700000000000001</horizontal_fov>
+            <image>
+              <width>1920</width>
+              <height>1080</height>
+              <format>RGB_INT8</format>
+              <anti_aliasing>4</anti_aliasing>
+            </image>
+            <camera_info_topic>__default__</camera_info_topic>
+            <trigger_topic></trigger_topic>
+            <triggered>false</triggered>
+            <clip>
+              <near>0.10000000000000001</near>
+              <far>100</far>
+            </clip>
+            <save enabled='false'>
+              <path>__default__</path>
+            </save>
+            <visibility_mask>4294967295</visibility_mask>
+            <noise>
+              <type>none</type>
+              <mean>0</mean>
+              <stddev>0</stddev>
+            </noise>
+            <distortion>
+              <k1>0</k1>
+              <k2>0</k2>
+              <k3>0</k3>
+              <p1>0</p1>
+              <p2>0</p2>
+              <center>0.5 0.5</center>
+            </distortion>
+            <lens>
+              <type>stereographic</type>
+              <scale_to_hfov>true</scale_to_hfov>
+              <cutoff_angle>1.5708</cutoff_angle>
+              <env_texture_size>256</env_texture_size>
+            </lens>
+            <optical_frame_id></optical_frame_id>
+          </camera>
+        </sensor>
+        <enable_wind>false</enable_wind>
+      </link>
+      <plugin name='ign_ros2_control::IgnitionROS2ControlPlugin' filename='ign_ros2_control-system'>
+        <ros>
+          <namespace>iiwa</namespace>
+        </ros>
+        <robot_param_node>robot_state_publisher</robot_param_node>
+        <parameters>/home/user/ros2_ws/install/iiwa_description/share/iiwa_description/config/iiwa_controllers.yaml</parameters>
+      </plugin>
+      <frame name='iiwa_iiwa_base_joint' attached_to='iiwa_iiwa_base'>
+        <pose>0 0 0 0 -0 0</pose>
+      </frame>
+      <frame name='iiwa_link_0' attached_to='iiwa_iiwa_base_joint'/>
+      <frame name='iiwa_camera_joint' attached_to='iiwa_tool0'>
+        <pose>0 0 0 3.14 -1.57 0</pose>
+      </frame>
+      <frame name='iiwa_camera_link' attached_to='iiwa_camera_joint'/>
+      <frame name='iiwa_joint_a7-tool0' attached_to='iiwa_link_7'>
+        <pose>0 0 0.154 0 -0 0</pose>
+      </frame>
+      <frame name='iiwa_tool0' attached_to='iiwa_joint_a7-tool0'/>
+      <pose>0 2 0.1 0 -0 0</pose>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='fra2mo'>
+      <link name='fra2mo_base_footprint'>
+        <inertial>
+          <pose>0 0 0.062059 0 -0 0</pose>
+          <mass>5.0999999999999996</mass>
+          <inertia>
+            <ixx>0.0310584</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0310584</iyy>
+            <iyz>0</iyz>
+            <izz>0.030318500000000002</izz>
+          </inertia>
+        </inertial>
+        <collision name='fra2mo_base_footprint_fixed_joint_lump__fra2mo_base_link_collision'>
+          <pose>0 0 0.09899999999999999 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.17999999999999999</length>
+              <radius>0.11</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <collision name='fra2mo_base_footprint_fixed_joint_lump__fra2mo_base_link_collision_1'>
+          <pose>-0.0825 0 0.019 0 0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>0.019</radius>
+            </sphere>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <collision name='fra2mo_base_footprint_fixed_joint_lump__fra2mo_laser_frame_collision_2'>
+          <pose>0 0 0.184 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.040000000000000001</length>
+              <radius>0.036999999999999998</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+          </surface>
+        </collision>
+        <visual name='fra2mo_base_footprint_fixed_joint_lump__fra2mo_base_link_visual'>
+          <pose>0 0 0.059 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/user/ros2_ws/install/ros2_fra2mo/share/ros2_fra2mo/meshes/rl_fra2mo_body.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0 0 1 1</diffuse>
+            <ambient>0 0 1 1</ambient>
+          </material>
+        </visual>
+        <visual name='fra2mo_base_footprint_fixed_joint_lump__fra2mo_laser_frame_visual_1'>
+          <pose>0 0 0.184 0 0 -1.570796327</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/user/ros2_ws/install/ros2_fra2mo/share/ros2_fra2mo/meshes/lidar.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <ambient>1 1 1 1</ambient>
+          </material>
+        </visual>
+        <sensor name='fra2mo_lidar_sensor' type='gpu_lidar'>
+          <pose>0 0 0.215 0 -0 0</pose>
+          <topic>/fra2mo/lidar</topic>
+          <update_rate>10</update_rate>
+          <enable_metrics>false</enable_metrics>
+          <lidar>
+            <scan>
+              <horizontal>
+                <samples>640</samples>
+                <resolution>1</resolution>
+                <min_angle>-3.1400000000000001</min_angle>
+                <max_angle>3.1400000000000001</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <min_angle>0</min_angle>
+                <max_angle>0</max_angle>
+                <resolution>1</resolution>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.10000000000000001</min>
+              <max>10</max>
+              <resolution>0.01</resolution>
+            </range>
+            <noise>
+              <type>none</type>
+              <mean>0</mean>
+              <stddev>0</stddev>
+            </noise>
+            <visibility_mask>4294967295</visibility_mask>
+          </lidar>
+        </sensor>
+        <pose>0 0 0 0 -0 0</pose>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='fra2mo_left_wheel_joint' type='revolute'>
+        <pose>0 0 0 0 -0 0</pose>
+        <parent>fra2mo_base_footprint</parent>
+        <child>fra2mo_left_wheel_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-10000000000000000</lower>
+            <upper>10000000000000000</upper>
+            <effort>100</effort>
+            <velocity>100</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0.5</damping>
+            <friction>0.01</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='fra2mo_left_wheel_link'>
+        <pose>0.04025 0.062 0.035 0 3e-06 -0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>2.5</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.001</iyy>
+            <iyz>0</iyz>
+            <izz>0.001</izz>
+          </inertia>
+        </inertial>
+        <collision name='fra2mo_left_wheel_link_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/user/ros2_ws/install/ros2_fra2mo/share/ros2_fra2mo/meshes/rl_fra2mo_wheel.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='fra2mo_left_wheel_link_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/user/ros2_ws/install/ros2_fra2mo/share/ros2_fra2mo/meshes/rl_fra2mo_wheel.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0 0 0 1</diffuse>
+            <ambient>0 0 0 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='fra2mo_right_wheel_joint' type='revolute'>
+        <pose>0 -0 0 0 -0 0</pose>
+        <parent>fra2mo_base_footprint</parent>
+        <child>fra2mo_right_wheel_link</child>
+        <axis>
+          <xyz>0 -1 0</xyz>
+          <limit>
+            <lower>-10000000000000000</lower>
+            <upper>10000000000000000</upper>
+            <effort>100</effort>
+            <velocity>100</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0.5</damping>
+            <friction>0.01</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='fra2mo_right_wheel_link'>
+        <pose>0.04025 -0.062 0.035 -0 0.947122 -3.14159</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>2.5</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.001</iyy>
+            <iyz>0</iyz>
+            <izz>0.001</izz>
+          </inertia>
+        </inertial>
+        <collision name='fra2mo_right_wheel_link_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/user/ros2_ws/install/ros2_fra2mo/share/ros2_fra2mo/meshes/rl_fra2mo_wheel.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='fra2mo_right_wheel_link_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/user/ros2_ws/install/ros2_fra2mo/share/ros2_fra2mo/meshes/rl_fra2mo_wheel.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0 0 0 1</diffuse>
+            <ambient>0 0 0 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <plugin name='ignition::gazebo::systems::DiffDrive' filename='libignition-gazebo-diff-drive-system.so'>
+        <left_joint>fra2mo_left_wheel_joint</left_joint>
+        <right_joint>fra2mo_right_wheel_joint</right_joint>
+        <wheel_separation>0.124</wheel_separation>
+        <wheel_radius>0.035</wheel_radius>
+        <odom_publish_frequency>50</odom_publish_frequency>
+        <topic>/fra2mo/cmd_vel</topic>
+      </plugin>
+      <frame name='fra2mo_d435_joint' attached_to='fra2mo_base_link'>
+        <pose>0.090925 0 0.0667 0 -0 0</pose>
+      </frame>
+      <frame name='fra2mo_d435_link' attached_to='fra2mo_d435_joint'/>
+      <frame name='fra2mo_laser_joint' attached_to='fra2mo_lidar_link'>
+        <pose>0 0 0.031 0 -0 0</pose>
+      </frame>
+      <frame name='fra2mo_laser_frame' attached_to='fra2mo_laser_joint'/>
+      <frame name='fra2mo_lidar_joint' attached_to='fra2mo_base_link'>
+        <pose>0 0 0.125 0 -0 0</pose>
+      </frame>
+      <frame name='fra2mo_lidar_link' attached_to='fra2mo_lidar_joint'/>
+      <frame name='fra2mo_base_footprint_joint' attached_to='fra2mo_base_footprint'>
+        <pose>0 0 0.059 0 -0 0</pose>
+      </frame>
+      <frame name='fra2mo_base_link' attached_to='fra2mo_base_footprint_joint'/>
+      <pose>-3.98019 3.9516 -1e-05 -0.000238 0.000127 -0.089708</pose>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='column_center_1'>
+      <static>true</static>
+      <pose>-3.02201 0.008029 1 0 -0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1</radius>
+              <length>2</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1</radius>
+              <length>2</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.8 1</ambient>
+          </material>
+        </visual>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='ground_plane_1'>
+      <static>true</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.8 0.8 0.8 1</specular>
+          </material>
+        </visual>
+      </link>
+      <pose>-4.15767 -0.257121 0 0 -0 0</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='column_center_1_1'>
+      <static>true</static>
+      <pose>0.009985 -3.02755 1 0 -0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1</radius>
+              <length>2</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1</radius>
+              <length>2</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.8 1</ambient>
+          </material>
+        </visual>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='column_center_1_2'>
+      <static>true</static>
+      <pose>-0.059278 3.04124 1 0 -0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1</radius>
+              <length>2</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1</radius>
+              <length>2</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.8 1</ambient>
+          </material>
+        </visual>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <light name='sun' type='directional'>
+      <pose>0 0 10 0 -0 0</pose>
+      <cast_shadows>true</cast_shadows>
+      <intensity>1</intensity>
+      <direction>-0.5 0.1 -0.9</direction>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>10</range>
+        <linear>1</linear>
+        <constant>1</constant>
+        <quadratic>0</quadratic>
+      </attenuation>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+  </world>
+</sdf>
